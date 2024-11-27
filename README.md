@@ -3,17 +3,15 @@ Full analysis chain for analysis of HepSim files using Autoenecoder and Backprop
 ## Autoencoder example
 
 Use the directory: ana_truth
-Setup C++/ROOT as : source msetup.sh
+Setup C++/ROOT as : 
 
-
-Read ProMC files. The list of files is given in file data.in
-
+```
+cd  ana_truth
 source msetup.sh
- make
+make
+```
 
-
-Run over all files using A_RUN which executes ana.cc.
-The output ROOT files goes to "out" directory
+This compiles ana.cc which reads ProMC files from the file specified in "data.in" The output ROOT files goes to "out" directory
 
 ```
    ./A_RUN_ttbar - ttbar background
@@ -37,7 +35,6 @@ https://atlaswww.hep.anl.gov/hepsim/info.php?item=383
 https://atlaswww.hep.anl.gov/hepsim/info.php?item=385
 https://atlaswww.hep.anl.gov/hepsim/info.php?item=386
 ```
-
 
 You need to download this data so you can run these scripts.
   
