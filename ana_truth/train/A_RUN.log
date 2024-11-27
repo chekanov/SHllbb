@@ -1,0 +1,512 @@
+Full run
+atlaslogin01.hep.anl.gov
+Pythia8 setup
+Set ROOT enviroment for Dijet+Lepton program
+HOST=atlaslogin01.hep.anl.gov 
+PROMC was set to /users/chekanov/work/DoubleHiggs/SHllbb/ana_truth/lib/promc
+Setup ROOT, PyROOT tensorflow
+[7mlsetup              [0m lsetup <tool1> [ <tool2> ...] (see lsetup -h):
+[7m lsetup asetup      [0m  (or asetup) to setup an Athena release
+[7m lsetup astyle      [0m  ATLAS style macros
+[7m lsetup atlantis    [0m  Atlantis: event display
+[7m lsetup centralpage [0m  Find samples
+[7m lsetup eiclient    [0m  Event Index 
+[7m lsetup emi         [0m  EMI: grid middleware user interface 
+[7m lsetup lcgenv      [0m  lcgenv: setup tools from cvmfs SFT repository
+[7m lsetup panda       [0m  Panda: Production ANd Distributed Analysis
+[7m lsetup pyami       [0m  pyAMI: ATLAS Metadata Interface python client
+[7m lsetup root        [0m  ROOT data processing framework
+[7m lsetup rucio       [0m  distributed data management system client
+[7m lsetup scikit      [0m  python data analysis ecosystem
+[7m lsetup views       [0m  Set up a full LCG release
+[7m lsetup xcache      [0m  XRootD local proxy cache
+[7m lsetup xrootd      [0m  XRootD data access
+[7madvancedTools       [0m advanced tools menu
+[7mdiagnostics         [0m diagnostic tools menu
+[7mhelpMe              [0m more help
+[7minstallPip          [0m install relocatable pip modules locally
+[7minstallRpm          [0m install relocatable rpms locally
+[7mprintMenu           [0m show this menu
+[7mqueryC              [0m find / whatis container query
+[7mshowVersions        [0m show versions of installed software
+
+************************************************************************
+Requested:  views ... 
+ Setting up [4mviews LCG_105:x86_64-el9-gcc13-opt[0m ... 
+>>>>>>>>>>>>>>>>>>>>>>>>> Information for user <<<<<<<<<<<<<<<<<<<<<<<<<
+************************************************************************
+Setup Fastjet
+2024-11-13 15:11:29.904276: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+maxNumber= 10  maxTypes= 5  mSize= 5
+Number of arguments: 2 arguments.
+Argument List: ['arun_autoencoder.py', 'out/tev13.6pp_pythia8_ttbar_2lep_data10percent.csv.gz']
+Train model =  ./models/tev13.6pp_pythia8_ttbar_2lep_data10percent
+Figures in =  ./figs/tev13.6pp_pythia8_ttbar_2lep_data10percent
+Nr of epochs= 1000
+Bunch size= 100
+Numpy version      : 1.23.5
+Pandas version     : 1.5.3
+Matplotlib version : 3.8.0
+Seaborn version    : 0.11.2
+Tensorflow version : 2.13.1
+Use fixed seed= 101
+Reading= out/tev13.6pp_pythia8_ttbar_2lep_data10percent.csv.gz
+DF size= 516972670  DF shape= (198454, 2605)  DF dimension= 2
+Skip run, event and weight columns..
+DF size= 516377308  DF shape= (198454, 2602)  DF dimension= 2
+Read common 0 columns from  columns_with_0_10j10b5rest.txt
+-> Experimental: Drop columns with 0
+Total zero-cells removed= 1306
+Apply scalers and remove 0 columns: DF size= 257196384  DF shape= (198454, 1296)  DF dimension= 2
+
+## Data Preprocessing:
+-> Validation fraction= 0.3  Training fraction= 0.7
+Training data size   : (138917, 1295)
+Validation data size : (59537, 1295)
+No data Standardization since RMM already have (0,1) range
+Model: "model"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_1 (InputLayer)        [(None, 1295)]            0         
+                                                                 
+ dense (Dense)               (None, 800)               1036800   
+                                                                 
+ dense_1 (Dense)             (None, 400)               320400    
+                                                                 
+ dense_2 (Dense)             (None, 200)               80200     
+                                                                 
+ dense_3 (Dense)             (None, 400)               80400     
+                                                                 
+ dense_4 (Dense)             (None, 800)               320800    
+                                                                 
+ dense_5 (Dense)             (None, 1295)              1037295   
+                                                                 
+=================================================================
+Total params: 2875895 (10.97 MB)
+Trainable params: 2875895 (10.97 MB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+WARNING:tensorflow:`period` argument is deprecated. Please use `save_freq` to specify the frequency in number of batches seen.
+Epoch 1/1000
+1390/1390 - 64s - loss: 2.3670e-05 - val_loss: 5.5386e-06 - 64s/epoch - 46ms/step
+Epoch 2/1000
+1390/1390 - 62s - loss: 4.0425e-06 - val_loss: 3.7761e-06 - 62s/epoch - 45ms/step
+Epoch 3/1000
+1390/1390 - 62s - loss: 2.9000e-06 - val_loss: 2.2815e-06 - 62s/epoch - 45ms/step
+Epoch 4/1000
+1390/1390 - 62s - loss: 2.3469e-06 - val_loss: 1.8423e-06 - 62s/epoch - 45ms/step
+Epoch 5/1000
+1390/1390 - 62s - loss: 2.0074e-06 - val_loss: 2.4798e-06 - 62s/epoch - 45ms/step
+Epoch 6/1000
+1390/1390 - 62s - loss: 1.7516e-06 - val_loss: 1.9683e-06 - 62s/epoch - 44ms/step
+Epoch 7/1000
+1390/1390 - 62s - loss: 1.5774e-06 - val_loss: 1.8421e-06 - 62s/epoch - 45ms/step
+Epoch 8/1000
+1390/1390 - 62s - loss: 1.5234e-06 - val_loss: 1.8236e-06 - 62s/epoch - 44ms/step
+Epoch 9/1000
+1390/1390 - 62s - loss: 1.3210e-06 - val_loss: 1.6945e-06 - 62s/epoch - 44ms/step
+Epoch 10/1000
+
+Epoch 10: saving model to ./models/tev13.6pp_pythia8_ttbar_2lep_data10percent
+1390/1390 - 64s - loss: 1.2977e-06 - val_loss: 1.6275e-06 - 64s/epoch - 46ms/step
+Epoch 11/1000
+1390/1390 - 62s - loss: 1.1235e-06 - val_loss: 1.0578e-06 - 62s/epoch - 45ms/step
+Epoch 12/1000
+1390/1390 - 62s - loss: 1.0709e-06 - val_loss: 1.3505e-06 - 62s/epoch - 44ms/step
+Epoch 13/1000
+1390/1390 - 61s - loss: 1.0683e-06 - val_loss: 1.1714e-06 - 61s/epoch - 44ms/step
+Epoch 14/1000
+1390/1390 - 62s - loss: 1.0277e-06 - val_loss: 1.0909e-06 - 62s/epoch - 45ms/step
+Epoch 15/1000
+1390/1390 - 62s - loss: 9.6419e-07 - val_loss: 1.0027e-06 - 62s/epoch - 44ms/step
+Epoch 16/1000
+1390/1390 - 62s - loss: 9.2772e-07 - val_loss: 8.8718e-07 - 62s/epoch - 45ms/step
+Epoch 17/1000
+1390/1390 - 62s - loss: 8.4129e-07 - val_loss: 1.6119e-06 - 62s/epoch - 45ms/step
+Epoch 18/1000
+1390/1390 - 62s - loss: 9.0301e-07 - val_loss: 7.4087e-07 - 62s/epoch - 44ms/step
+Epoch 19/1000
+1390/1390 - 61s - loss: 9.3877e-07 - val_loss: 1.1243e-06 - 61s/epoch - 44ms/step
+Epoch 20/1000
+
+Epoch 20: saving model to ./models/tev13.6pp_pythia8_ttbar_2lep_data10percent
+1390/1390 - 63s - loss: 7.7849e-07 - val_loss: 7.2293e-07 - 63s/epoch - 46ms/step
+Epoch 21/1000
+1390/1390 - 62s - loss: 7.7915e-07 - val_loss: 7.6773e-07 - 62s/epoch - 45ms/step
+Epoch 22/1000
+1390/1390 - 62s - loss: 7.0010e-07 - val_loss: 9.4127e-07 - 62s/epoch - 44ms/step
+Epoch 23/1000
+1390/1390 - 61s - loss: 7.3409e-07 - val_loss: 7.1485e-07 - 61s/epoch - 44ms/step
+Epoch 24/1000
+1390/1390 - 61s - loss: 6.9855e-07 - val_loss: 9.2890e-07 - 61s/epoch - 44ms/step
+Epoch 25/1000
+1390/1390 - 61s - loss: 6.8420e-07 - val_loss: 6.1697e-07 - 61s/epoch - 44ms/step
+Epoch 26/1000
+1390/1390 - 62s - loss: 6.5627e-07 - val_loss: 7.9459e-07 - 62s/epoch - 44ms/step
+Epoch 27/1000
+1390/1390 - 62s - loss: 6.2565e-07 - val_loss: 8.0636e-07 - 62s/epoch - 45ms/step
+Epoch 28/1000
+1390/1390 - 62s - loss: 6.3625e-07 - val_loss: 7.3227e-07 - 62s/epoch - 44ms/step
+Epoch 29/1000
+1390/1390 - 61s - loss: 6.1992e-07 - val_loss: 6.2636e-07 - 61s/epoch - 44ms/step
+Epoch 30/1000
+
+Epoch 30: saving model to ./models/tev13.6pp_pythia8_ttbar_2lep_data10percent
+1390/1390 - 64s - loss: 5.6789e-07 - val_loss: 5.5710e-07 - 64s/epoch - 46ms/step
+Epoch 31/1000
+1390/1390 - 62s - loss: 5.8223e-07 - val_loss: 1.0389e-06 - 62s/epoch - 44ms/step
+Epoch 32/1000
+1390/1390 - 61s - loss: 5.9847e-07 - val_loss: 5.2339e-07 - 61s/epoch - 44ms/step
+Epoch 33/1000
+1390/1390 - 62s - loss: 5.6181e-07 - val_loss: 7.5193e-07 - 62s/epoch - 44ms/step
+Epoch 34/1000
+1390/1390 - 62s - loss: 6.1035e-07 - val_loss: 6.6020e-07 - 62s/epoch - 44ms/step
+Epoch 35/1000
+1390/1390 - 62s - loss: 5.0213e-07 - val_loss: 5.9374e-07 - 62s/epoch - 44ms/step
+Epoch 36/1000
+1390/1390 - 61s - loss: 5.0776e-07 - val_loss: 7.2098e-07 - 61s/epoch - 44ms/step
+Epoch 37/1000
+1390/1390 - 61s - loss: 5.1306e-07 - val_loss: 5.2459e-07 - 61s/epoch - 44ms/step
+Epoch 38/1000
+1390/1390 - 61s - loss: 5.0203e-07 - val_loss: 6.3537e-07 - 61s/epoch - 44ms/step
+Epoch 39/1000
+1390/1390 - 62s - loss: 4.9654e-07 - val_loss: 5.1824e-07 - 62s/epoch - 45ms/step
+Epoch 40/1000
+
+Epoch 40: saving model to ./models/tev13.6pp_pythia8_ttbar_2lep_data10percent
+1390/1390 - 64s - loss: 5.1729e-07 - val_loss: 1.1998e-06 - 64s/epoch - 46ms/step
+Epoch 41/1000
+1390/1390 - 62s - loss: 5.0988e-07 - val_loss: 7.0239e-07 - 62s/epoch - 44ms/step
+Epoch 42/1000
+1390/1390 - 62s - loss: 4.6915e-07 - val_loss: 4.2210e-07 - 62s/epoch - 45ms/step
+Epoch 43/1000
+1390/1390 - 61s - loss: 4.4882e-07 - val_loss: 4.8251e-07 - 61s/epoch - 44ms/step
+Epoch 44/1000
+1390/1390 - 61s - loss: 4.5293e-07 - val_loss: 1.1311e-06 - 61s/epoch - 44ms/step
+Epoch 45/1000
+1390/1390 - 61s - loss: 4.6303e-07 - val_loss: 5.3628e-07 - 61s/epoch - 44ms/step
+Epoch 46/1000
+1390/1390 - 62s - loss: 4.6053e-07 - val_loss: 4.9462e-07 - 62s/epoch - 44ms/step
+Epoch 47/1000
+1390/1390 - 62s - loss: 4.1985e-07 - val_loss: 7.2075e-07 - 62s/epoch - 44ms/step
+Epoch 48/1000
+1390/1390 - 62s - loss: 4.3164e-07 - val_loss: 5.8682e-07 - 62s/epoch - 44ms/step
+Epoch 49/1000
+1390/1390 - 62s - loss: 4.0047e-07 - val_loss: 3.8780e-07 - 62s/epoch - 44ms/step
+Epoch 50/1000
+
+Epoch 50: saving model to ./models/tev13.6pp_pythia8_ttbar_2lep_data10percent
+1390/1390 - 64s - loss: 4.0378e-07 - val_loss: 5.8637e-07 - 64s/epoch - 46ms/step
+Epoch 51/1000
+1390/1390 - 61s - loss: 4.1744e-07 - val_loss: 4.7037e-07 - 61s/epoch - 44ms/step
+Epoch 52/1000
+1390/1390 - 61s - loss: 3.9399e-07 - val_loss: 5.0914e-07 - 61s/epoch - 44ms/step
+Epoch 53/1000
+1390/1390 - 61s - loss: 3.8547e-07 - val_loss: 7.3839e-07 - 61s/epoch - 44ms/step
+Epoch 54/1000
+1390/1390 - 61s - loss: 3.7059e-07 - val_loss: 1.2570e-06 - 61s/epoch - 44ms/step
+Epoch 55/1000
+1390/1390 - 61s - loss: 3.7155e-07 - val_loss: 4.5801e-07 - 61s/epoch - 44ms/step
+Epoch 56/1000
+1390/1390 - 62s - loss: 4.3395e-07 - val_loss: 5.6516e-07 - 62s/epoch - 44ms/step
+Epoch 57/1000
+1390/1390 - 62s - loss: 3.7600e-07 - val_loss: 5.4224e-07 - 62s/epoch - 44ms/step
+Epoch 58/1000
+1390/1390 - 62s - loss: 3.6145e-07 - val_loss: 3.9024e-07 - 62s/epoch - 44ms/step
+Epoch 59/1000
+1390/1390 - 61s - loss: 4.1726e-07 - val_loss: 4.1578e-07 - 61s/epoch - 44ms/step
+Epoch 60/1000
+
+Epoch 60: saving model to ./models/tev13.6pp_pythia8_ttbar_2lep_data10percent
+1390/1390 - 63s - loss: 3.4327e-07 - val_loss: 4.3157e-07 - 63s/epoch - 45ms/step
+Epoch 61/1000
+1390/1390 - 62s - loss: 3.5623e-07 - val_loss: 5.3078e-07 - 62s/epoch - 44ms/step
+Epoch 62/1000
+1390/1390 - 62s - loss: 3.3953e-07 - val_loss: 3.6422e-07 - 62s/epoch - 45ms/step
+Epoch 63/1000
+1390/1390 - 62s - loss: 3.2549e-07 - val_loss: 6.2693e-07 - 62s/epoch - 45ms/step
+Epoch 64/1000
+1390/1390 - 62s - loss: 3.3533e-07 - val_loss: 3.6604e-07 - 62s/epoch - 44ms/step
+Epoch 65/1000
+1390/1390 - 62s - loss: 3.2730e-07 - val_loss: 4.0377e-07 - 62s/epoch - 44ms/step
+Epoch 66/1000
+1390/1390 - 62s - loss: 3.2670e-07 - val_loss: 3.9773e-07 - 62s/epoch - 44ms/step
+Epoch 67/1000
+1390/1390 - 61s - loss: 3.3632e-07 - val_loss: 1.0353e-06 - 61s/epoch - 44ms/step
+Epoch 68/1000
+1390/1390 - 61s - loss: 3.2264e-07 - val_loss: 3.1693e-07 - 61s/epoch - 44ms/step
+Epoch 69/1000
+1390/1390 - 62s - loss: 3.2183e-07 - val_loss: 4.8626e-07 - 62s/epoch - 44ms/step
+Epoch 70/1000
+
+Epoch 70: saving model to ./models/tev13.6pp_pythia8_ttbar_2lep_data10percent
+1390/1390 - 64s - loss: 3.0046e-07 - val_loss: 3.4839e-07 - 64s/epoch - 46ms/step
+Epoch 71/1000
+1390/1390 - 62s - loss: 3.0630e-07 - val_loss: 4.5767e-07 - 62s/epoch - 44ms/step
+Epoch 72/1000
+1390/1390 - 62s - loss: 3.3959e-07 - val_loss: 3.6531e-07 - 62s/epoch - 44ms/step
+Epoch 73/1000
+1390/1390 - 62s - loss: 2.8662e-07 - val_loss: 4.4941e-07 - 62s/epoch - 45ms/step
+Epoch 74/1000
+1390/1390 - 62s - loss: 2.9501e-07 - val_loss: 4.8167e-07 - 62s/epoch - 44ms/step
+Epoch 75/1000
+1390/1390 - 62s - loss: 3.1381e-07 - val_loss: 5.4416e-07 - 62s/epoch - 44ms/step
+Epoch 76/1000
+1390/1390 - 61s - loss: 3.3977e-07 - val_loss: 2.9973e-07 - 61s/epoch - 44ms/step
+Epoch 77/1000
+1390/1390 - 62s - loss: 2.6813e-07 - val_loss: 6.7267e-07 - 62s/epoch - 44ms/step
+Epoch 78/1000
+1390/1390 - 61s - loss: 2.9207e-07 - val_loss: 3.4785e-07 - 61s/epoch - 44ms/step
+Epoch 79/1000
+1390/1390 - 62s - loss: 2.9723e-07 - val_loss: 5.4624e-07 - 62s/epoch - 44ms/step
+Epoch 80/1000
+
+Epoch 80: saving model to ./models/tev13.6pp_pythia8_ttbar_2lep_data10percent
+1390/1390 - 64s - loss: 2.8322e-07 - val_loss: 3.9629e-07 - 64s/epoch - 46ms/step
+Epoch 81/1000
+1390/1390 - 61s - loss: 2.7159e-07 - val_loss: 3.5734e-07 - 61s/epoch - 44ms/step
+Epoch 82/1000
+1390/1390 - 62s - loss: 2.7543e-07 - val_loss: 2.9913e-07 - 62s/epoch - 44ms/step
+Epoch 83/1000
+1390/1390 - 62s - loss: 2.8129e-07 - val_loss: 4.0785e-07 - 62s/epoch - 44ms/step
+Epoch 84/1000
+1390/1390 - 61s - loss: 3.2327e-07 - val_loss: 4.0674e-07 - 61s/epoch - 44ms/step
+Epoch 85/1000
+1390/1390 - 61s - loss: 2.5350e-07 - val_loss: 4.0031e-07 - 61s/epoch - 44ms/step
+Epoch 86/1000
+1390/1390 - 61s - loss: 2.6380e-07 - val_loss: 6.5405e-07 - 61s/epoch - 44ms/step
+Epoch 87/1000
+1390/1390 - 61s - loss: 2.6504e-07 - val_loss: 2.9351e-07 - 61s/epoch - 44ms/step
+Epoch 88/1000
+1390/1390 - 61s - loss: 2.5228e-07 - val_loss: 3.4309e-07 - 61s/epoch - 44ms/step
+Epoch 89/1000
+1390/1390 - 62s - loss: 2.5429e-07 - val_loss: 2.8881e-07 - 62s/epoch - 44ms/step
+Epoch 90/1000
+
+Epoch 90: saving model to ./models/tev13.6pp_pythia8_ttbar_2lep_data10percent
+1390/1390 - 64s - loss: 2.7506e-07 - val_loss: 2.9701e-07 - 64s/epoch - 46ms/step
+Epoch 91/1000
+1390/1390 - 62s - loss: 2.4299e-07 - val_loss: 4.4209e-07 - 62s/epoch - 45ms/step
+Epoch 92/1000
+1390/1390 - 62s - loss: 2.5434e-07 - val_loss: 7.0383e-07 - 62s/epoch - 44ms/step
+Epoch 93/1000
+1390/1390 - 62s - loss: 2.4795e-07 - val_loss: 4.1927e-07 - 62s/epoch - 44ms/step
+Epoch 94/1000
+1390/1390 - 62s - loss: 2.6971e-07 - val_loss: 3.3803e-07 - 62s/epoch - 44ms/step
+Epoch 95/1000
+1390/1390 - 61s - loss: 2.3948e-07 - val_loss: 3.2810e-07 - 61s/epoch - 44ms/step
+Epoch 96/1000
+1390/1390 - 62s - loss: 2.4085e-07 - val_loss: 3.5179e-07 - 62s/epoch - 44ms/step
+Epoch 97/1000
+1390/1390 - 61s - loss: 2.2922e-07 - val_loss: 2.9708e-07 - 61s/epoch - 44ms/step
+Epoch 98/1000
+1390/1390 - 61s - loss: 2.4065e-07 - val_loss: 3.4839e-07 - 61s/epoch - 44ms/step
+Epoch 99/1000
+1390/1390 - 62s - loss: 2.4157e-07 - val_loss: 3.3417e-07 - 62s/epoch - 44ms/step
+Epoch 100/1000
+
+Epoch 100: saving model to ./models/tev13.6pp_pythia8_ttbar_2lep_data10percent
+1390/1390 - 64s - loss: 2.4567e-07 - val_loss: 3.0821e-07 - 64s/epoch - 46ms/step
+Epoch 101/1000
+1390/1390 - 61s - loss: 2.2070e-07 - val_loss: 3.8286e-07 - 61s/epoch - 44ms/step
+Epoch 102/1000
+1390/1390 - 62s - loss: 2.3175e-07 - val_loss: 2.6295e-07 - 62s/epoch - 44ms/step
+Epoch 103/1000
+1390/1390 - 61s - loss: 2.4677e-07 - val_loss: 3.4626e-07 - 61s/epoch - 44ms/step
+Epoch 104/1000
+1390/1390 - 62s - loss: 2.2869e-07 - val_loss: 2.6315e-07 - 62s/epoch - 44ms/step
+Epoch 105/1000
+1390/1390 - 62s - loss: 2.1124e-07 - val_loss: 3.3296e-07 - 62s/epoch - 44ms/step
+Epoch 106/1000
+1390/1390 - 61s - loss: 2.4888e-07 - val_loss: 2.3952e-07 - 61s/epoch - 44ms/step
+Epoch 107/1000
+1390/1390 - 61s - loss: 2.2371e-07 - val_loss: 6.8519e-07 - 61s/epoch - 44ms/step
+Epoch 108/1000
+1390/1390 - 62s - loss: 2.3077e-07 - val_loss: 4.0019e-07 - 62s/epoch - 44ms/step
+Epoch 109/1000
+1390/1390 - 62s - loss: 2.0718e-07 - val_loss: 4.5965e-07 - 62s/epoch - 44ms/step
+Epoch 110/1000
+
+Epoch 110: saving model to ./models/tev13.6pp_pythia8_ttbar_2lep_data10percent
+1390/1390 - 64s - loss: 2.1676e-07 - val_loss: 2.9595e-07 - 64s/epoch - 46ms/step
+Epoch 111/1000
+1390/1390 - 62s - loss: 2.2062e-07 - val_loss: 3.2650e-07 - 62s/epoch - 45ms/step
+Epoch 112/1000
+1390/1390 - 62s - loss: 2.2228e-07 - val_loss: 1.0351e-06 - 62s/epoch - 44ms/step
+Epoch 113/1000
+1390/1390 - 61s - loss: 2.2970e-07 - val_loss: 4.8738e-07 - 61s/epoch - 44ms/step
+Epoch 114/1000
+1390/1390 - 61s - loss: 2.2479e-07 - val_loss: 2.7066e-07 - 61s/epoch - 44ms/step
+Epoch 115/1000
+1390/1390 - 66s - loss: 1.9293e-07 - val_loss: 5.2682e-07 - 66s/epoch - 47ms/step
+Epoch 116/1000
+1390/1390 - 63s - loss: 2.1053e-07 - val_loss: 1.0462e-06 - 63s/epoch - 46ms/step
+Epoch 117/1000
+1390/1390 - 62s - loss: 2.0522e-07 - val_loss: 3.6243e-07 - 62s/epoch - 45ms/step
+Epoch 118/1000
+1390/1390 - 61s - loss: 2.1102e-07 - val_loss: 4.3950e-07 - 61s/epoch - 44ms/step
+Epoch 119/1000
+1390/1390 - 62s - loss: 2.0756e-07 - val_loss: 3.7406e-07 - 62s/epoch - 45ms/step
+Epoch 120/1000
+
+Epoch 120: saving model to ./models/tev13.6pp_pythia8_ttbar_2lep_data10percent
+1390/1390 - 64s - loss: 2.1450e-07 - val_loss: 3.3772e-07 - 64s/epoch - 46ms/step
+Epoch 121/1000
+1390/1390 - 62s - loss: 1.9876e-07 - val_loss: 3.6378e-07 - 62s/epoch - 44ms/step
+Epoch 122/1000
+1390/1390 - 61s - loss: 2.0594e-07 - val_loss: 2.6480e-07 - 61s/epoch - 44ms/step
+Epoch 123/1000
+1390/1390 - 61s - loss: 2.0916e-07 - val_loss: 5.4236e-07 - 61s/epoch - 44ms/step
+Epoch 124/1000
+1390/1390 - 64s - loss: 2.0202e-07 - val_loss: 4.0469e-07 - 64s/epoch - 46ms/step
+Epoch 125/1000
+1390/1390 - 67s - loss: 1.9527e-07 - val_loss: 3.1807e-07 - 67s/epoch - 48ms/step
+Epoch 126/1000
+1390/1390 - 65s - loss: 2.0474e-07 - val_loss: 2.9543e-07 - 65s/epoch - 47ms/step
+Epoch 127/1000
+1390/1390 - 61s - loss: 1.9996e-07 - val_loss: 3.0340e-07 - 61s/epoch - 44ms/step
+Epoch 128/1000
+1390/1390 - 62s - loss: 1.8430e-07 - val_loss: 3.0552e-07 - 62s/epoch - 44ms/step
+Epoch 129/1000
+1390/1390 - 62s - loss: 1.9104e-07 - val_loss: 5.0971e-07 - 62s/epoch - 44ms/step
+Epoch 130/1000
+
+Epoch 130: saving model to ./models/tev13.6pp_pythia8_ttbar_2lep_data10percent
+1390/1390 - 64s - loss: 1.8563e-07 - val_loss: 2.4884e-07 - 64s/epoch - 46ms/step
+Epoch 131/1000
+1390/1390 - 62s - loss: 1.9132e-07 - val_loss: 2.2621e-07 - 62s/epoch - 44ms/step
+Epoch 132/1000
+1390/1390 - 61s - loss: 2.0992e-07 - val_loss: 5.3291e-07 - 61s/epoch - 44ms/step
+Epoch 133/1000
+1390/1390 - 61s - loss: 1.9906e-07 - val_loss: 3.3711e-07 - 61s/epoch - 44ms/step
+Epoch 134/1000
+1390/1390 - 63s - loss: 1.7874e-07 - val_loss: 2.8530e-07 - 63s/epoch - 45ms/step
+Epoch 135/1000
+1390/1390 - 61s - loss: 1.9849e-07 - val_loss: 2.8886e-07 - 61s/epoch - 44ms/step
+Epoch 136/1000
+1390/1390 - 61s - loss: 1.8423e-07 - val_loss: 3.3302e-07 - 61s/epoch - 44ms/step
+Epoch 137/1000
+1390/1390 - 61s - loss: 1.6682e-07 - val_loss: 2.1182e-07 - 61s/epoch - 44ms/step
+Epoch 138/1000
+1390/1390 - 61s - loss: 1.7452e-07 - val_loss: 2.4167e-07 - 61s/epoch - 44ms/step
+Epoch 139/1000
+1390/1390 - 60s - loss: 1.8520e-07 - val_loss: 1.0983e-06 - 60s/epoch - 43ms/step
+Epoch 140/1000
+
+Epoch 140: saving model to ./models/tev13.6pp_pythia8_ttbar_2lep_data10percent
+1390/1390 - 63s - loss: 1.8874e-07 - val_loss: 2.4514e-07 - 63s/epoch - 45ms/step
+Epoch 141/1000
+1390/1390 - 61s - loss: 1.7727e-07 - val_loss: 4.3063e-07 - 61s/epoch - 44ms/step
+Epoch 142/1000
+1390/1390 - 61s - loss: 1.7197e-07 - val_loss: 2.8396e-07 - 61s/epoch - 44ms/step
+Epoch 143/1000
+1390/1390 - 61s - loss: 1.8571e-07 - val_loss: 2.7487e-07 - 61s/epoch - 44ms/step
+Epoch 144/1000
+1390/1390 - 60s - loss: 1.6558e-07 - val_loss: 3.4741e-07 - 60s/epoch - 43ms/step
+Epoch 145/1000
+1390/1390 - 61s - loss: 1.7113e-07 - val_loss: 2.7476e-07 - 61s/epoch - 44ms/step
+Epoch 146/1000
+1390/1390 - 61s - loss: 1.7471e-07 - val_loss: 2.6873e-07 - 61s/epoch - 44ms/step
+Epoch 147/1000
+1390/1390 - 61s - loss: 1.6428e-07 - val_loss: 3.1464e-07 - 61s/epoch - 44ms/step
+Epoch 148/1000
+1390/1390 - 61s - loss: 1.7513e-07 - val_loss: 2.3678e-07 - 61s/epoch - 44ms/step
+Epoch 149/1000
+1390/1390 - 61s - loss: 1.6301e-07 - val_loss: 3.5961e-07 - 61s/epoch - 44ms/step
+Epoch 150/1000
+
+Epoch 150: saving model to ./models/tev13.6pp_pythia8_ttbar_2lep_data10percent
+1390/1390 - 63s - loss: 1.8600e-07 - val_loss: 3.5588e-07 - 63s/epoch - 45ms/step
+Epoch 151/1000
+1390/1390 - 61s - loss: 1.8071e-07 - val_loss: 2.8701e-07 - 61s/epoch - 44ms/step
+Epoch 152/1000
+1390/1390 - 61s - loss: 1.7268e-07 - val_loss: 2.1689e-07 - 61s/epoch - 44ms/step
+Epoch 153/1000
+1390/1390 - 61s - loss: 1.5952e-07 - val_loss: 2.1482e-07 - 61s/epoch - 44ms/step
+Epoch 154/1000
+1390/1390 - 61s - loss: 1.7394e-07 - val_loss: 4.8172e-07 - 61s/epoch - 44ms/step
+Epoch 155/1000
+1390/1390 - 61s - loss: 1.5613e-07 - val_loss: 2.1651e-07 - 61s/epoch - 44ms/step
+Epoch 156/1000
+1390/1390 - 61s - loss: 1.7717e-07 - val_loss: 2.1173e-07 - 61s/epoch - 44ms/step
+Epoch 157/1000
+1390/1390 - 61s - loss: 1.6274e-07 - val_loss: 2.3951e-07 - 61s/epoch - 44ms/step
+Epoch 158/1000
+1390/1390 - 61s - loss: 1.6294e-07 - val_loss: 1.9904e-07 - 61s/epoch - 44ms/step
+Epoch 159/1000
+1390/1390 - 61s - loss: 1.5871e-07 - val_loss: 2.4533e-07 - 61s/epoch - 44ms/step
+Epoch 160/1000
+
+Epoch 160: saving model to ./models/tev13.6pp_pythia8_ttbar_2lep_data10percent
+1390/1390 - 62s - loss: 1.6733e-07 - val_loss: 2.2121e-07 - 62s/epoch - 45ms/step
+Epoch 161/1000
+1390/1390 - 60s - loss: 1.5843e-07 - val_loss: 9.8619e-07 - 60s/epoch - 44ms/step
+Epoch 162/1000
+1390/1390 - 60s - loss: 1.7895e-07 - val_loss: 3.4190e-07 - 60s/epoch - 43ms/step
+Epoch 163/1000
+1390/1390 - 60s - loss: 1.4737e-07 - val_loss: 2.2351e-07 - 60s/epoch - 43ms/step
+Epoch 164/1000
+1390/1390 - 61s - loss: 1.5489e-07 - val_loss: 4.3479e-07 - 61s/epoch - 44ms/step
+Epoch 165/1000
+1390/1390 - 61s - loss: 1.4504e-07 - val_loss: 2.5561e-07 - 61s/epoch - 44ms/step
+Epoch 166/1000
+1390/1390 - 61s - loss: 1.9653e-07 - val_loss: 2.5481e-07 - 61s/epoch - 44ms/step
+Epoch 167/1000
+1390/1390 - 61s - loss: 1.6454e-07 - val_loss: 3.4117e-07 - 61s/epoch - 44ms/step
+Epoch 168/1000
+1390/1390 - 61s - loss: 1.5265e-07 - val_loss: 2.4871e-07 - 61s/epoch - 44ms/step
+Epoch 169/1000
+1390/1390 - 61s - loss: 1.4757e-07 - val_loss: 2.0955e-07 - 61s/epoch - 44ms/step
+Epoch 170/1000
+
+Epoch 170: saving model to ./models/tev13.6pp_pythia8_ttbar_2lep_data10percent
+1390/1390 - 63s - loss: 1.6140e-07 - val_loss: 3.2349e-07 - 63s/epoch - 45ms/step
+Epoch 171/1000
+1390/1390 - 61s - loss: 1.5158e-07 - val_loss: 2.1711e-07 - 61s/epoch - 44ms/step
+Epoch 172/1000
+1390/1390 - 60s - loss: 1.4657e-07 - val_loss: 2.4381e-07 - 60s/epoch - 43ms/step
+Epoch 173/1000
+1390/1390 - 61s - loss: 1.5259e-07 - val_loss: 2.1785e-07 - 61s/epoch - 44ms/step
+Epoch 174/1000
+1390/1390 - 61s - loss: 1.5675e-07 - val_loss: 2.4268e-07 - 61s/epoch - 44ms/step
+Epoch 175/1000
+1390/1390 - 60s - loss: 1.4912e-07 - val_loss: 2.3151e-07 - 60s/epoch - 43ms/step
+Epoch 176/1000
+1390/1390 - 60s - loss: 1.5844e-07 - val_loss: 2.0000e-07 - 60s/epoch - 43ms/step
+Epoch 177/1000
+1390/1390 - 60s - loss: 1.3808e-07 - val_loss: 2.0977e-07 - 60s/epoch - 43ms/step
+Epoch 178/1000
+1390/1390 - 60s - loss: 1.5502e-07 - val_loss: 2.3378e-07 - 60s/epoch - 43ms/step
+Epoch 179/1000
+1390/1390 - 61s - loss: 1.3869e-07 - val_loss: 3.3996e-07 - 61s/epoch - 44ms/step
+Epoch 180/1000
+
+Epoch 180: saving model to ./models/tev13.6pp_pythia8_ttbar_2lep_data10percent
+1390/1390 - 63s - loss: 1.3741e-07 - val_loss: 2.1031e-07 - 63s/epoch - 45ms/step
+Epoch 181/1000
+1390/1390 - 61s - loss: 1.4164e-07 - val_loss: 2.4720e-07 - 61s/epoch - 44ms/step
+Epoch 182/1000
+1390/1390 - 61s - loss: 1.4428e-07 - val_loss: 2.9385e-07 - 61s/epoch - 44ms/step
+Epoch 183/1000
+1390/1390 - 61s - loss: 1.4342e-07 - val_loss: 2.3473e-07 - 61s/epoch - 44ms/step
+Epoch 184/1000
+1390/1390 - 60s - loss: 1.4835e-07 - val_loss: 1.9933e-07 - 60s/epoch - 43ms/step
+Epoch 185/1000
+1390/1390 - 61s - loss: 1.3864e-07 - val_loss: 2.8209e-07 - 61s/epoch - 44ms/step
+Epoch 186/1000
+1390/1390 - 61s - loss: 1.4591e-07 - val_loss: 3.7971e-07 - 61s/epoch - 44ms/step
+Epoch 187/1000
+1390/1390 - 61s - loss: 1.3780e-07 - val_loss: 2.3412e-07 - 61s/epoch - 44ms/step
+Epoch 188/1000
+Restoring model weights from the end of the best epoch: 158.
+1390/1390 - 60s - loss: 1.4360e-07 - val_loss: 3.0883e-07 - 60s/epoch - 43ms/step
+Epoch 188: early stopping
+/users/chekanov/work/DoubleHiggs/SHllbb/ana_truth/train/arun_autoencoder.py:304: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+## Finished! Time to run the model: 11591.551002 Sec.
+Traceback (most recent call last):
+  File "/users/chekanov/work/DoubleHiggs/SHllbb/ana_truth/train/arun_autoencoder.py", line 305, in <module>
+    SavePlotXY(figsDir+'/model_loss.csv', lines_loss, xlab,ylab)
+NameError: name 'SavePlotXY' is not defined

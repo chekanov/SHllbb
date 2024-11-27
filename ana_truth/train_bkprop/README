@@ -1,0 +1,8 @@
+Process MC with backpropogation and save to file.
+
+Train using "A_RUN"
+
+Process and calculate "scores" using *ANALYSIS* scripts
+
+The outputs gioes to "out/*BACKprop* files.
+

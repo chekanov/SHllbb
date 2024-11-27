@@ -1,0 +1,209 @@
+Full training
+atlaslogin01.hep.anl.gov
+Pythia8 setup
+Set ROOT enviroment for Dijet+Lepton program
+HOST=atlaslogin01.hep.anl.gov 
+PROMC was set to /users/chekanov/work/DoubleHiggs/SHllbb/ana_truth/lib/promc
+Setup ROOT, PyROOT tensorflow
+[7mlsetup              [0m lsetup <tool1> [ <tool2> ...] (see lsetup -h):
+[7m lsetup asetup      [0m  (or asetup) to setup an Athena release
+[7m lsetup astyle      [0m  ATLAS style macros
+[7m lsetup atlantis    [0m  Atlantis: event display
+[7m lsetup centralpage [0m  Find samples
+[7m lsetup eiclient    [0m  Event Index 
+[7m lsetup emi         [0m  EMI: grid middleware user interface 
+[7m lsetup lcgenv      [0m  lcgenv: setup tools from cvmfs SFT repository
+[7m lsetup panda       [0m  Panda: Production ANd Distributed Analysis
+[7m lsetup pyami       [0m  pyAMI: ATLAS Metadata Interface python client
+[7m lsetup root        [0m  ROOT data processing framework
+[7m lsetup rucio       [0m  distributed data management system client
+[7m lsetup scikit      [0m  python data analysis ecosystem
+[7m lsetup views       [0m  Set up a full LCG release
+[7m lsetup xcache      [0m  XRootD local proxy cache
+[7m lsetup xrootd      [0m  XRootD data access
+[7madvancedTools       [0m advanced tools menu
+[7mdiagnostics         [0m diagnostic tools menu
+[7mhelpMe              [0m more help
+[7minstallPip          [0m install relocatable pip modules locally
+[7minstallRpm          [0m install relocatable rpms locally
+[7mprintMenu           [0m show this menu
+[7mqueryC              [0m find / whatis container query
+[7mshowVersions        [0m show versions of installed software
+
+
+[1m[4m30 Nov 2023[0m 
+
+A serious security issue in ROOT's web-based GUI has been identified:
+
+  You should not use the web-based browser until further notice and instead 
+  set the old-style TBrowser as the default. Please see the Twiki page linked 
+  below for instructions on how to do this.
+
+  https://twiki.cern.ch/twiki/bin/view/AtlasComputing/AtlasComputingArchive/RootBrowserSecurityIssue
+
+  More details of this issue:
+  https://root.cern/about/security/#2023-11-26-open-port-for-control-of-web-gui-allows-read-and-write-access-to-file-system
+
+  [0;31mReason for this message: $HOME/.rootrc - has not set Browser.Name[0m 
+
+************************************************************************
+Requested:  views ... 
+ Setting up [4mviews LCG_105:x86_64-el9-gcc13-opt[0m ... 
+>>>>>>>>>>>>>>>>>>>>>>>>> Information for user <<<<<<<<<<<<<<<<<<<<<<<<<
+************************************************************************
+Setup Fastjet
+Read= out/pythia8_X500GeV_HH2bbll_data100percent.csv.gz
+Read= out/pythia8_X700GeV_HH2bbll_data100percent.csv.gz
+Read= out/pythia8_X1000GeV_HH2bbll_data100percent.csv.gz
+Read= out/pythia8_X1500GeV_HH2bbll_data100percent.csv.gz
+Read= out/pythia8_X2000GeV_HH2bbll_data100percent.csv.gz
+Final after append: size= 19478095  DF shape= (15041, 1295)  DF dimension= 2
+Read= out/tev13.6pp_pythia8_ttbar_2lep_data10percent.csv.gz
+
+## Data Preprocessing:
+-> Validation fraction= 0.3  Training fraction= 0.7
+Training data size   : (10528, 1295)
+Validation data size : (4513, 1295)
+Size of outputs= 10528
+BSM Training data size   : (10528, 1295)
+BSM Validation data size : (4513, 1295)
+SM Training data size   : (138917, 1295)
+SM Validation data size : (59537, 1295)
+Training data size after append  : (149445, 1295)
+Validation data size after append : (64050, 1295)
+input_dim : 1295
+Max epochs for = 200
+Epoch 1/200
+14945/14945 - 58s - loss: 0.0772 - accuracy: 0.9737 - 58s/epoch - 4ms/step
+Epoch 2/200
+14945/14945 - 56s - loss: 0.0547 - accuracy: 0.9815 - 56s/epoch - 4ms/step
+Epoch 3/200
+14945/14945 - 56s - loss: 0.0495 - accuracy: 0.9831 - 56s/epoch - 4ms/step
+Epoch 4/200
+14945/14945 - 58s - loss: 0.0461 - accuracy: 0.9848 - 58s/epoch - 4ms/step
+Epoch 5/200
+14945/14945 - 57s - loss: 0.0437 - accuracy: 0.9857 - 57s/epoch - 4ms/step
+Epoch 6/200
+14945/14945 - 57s - loss: 0.0414 - accuracy: 0.9863 - 57s/epoch - 4ms/step
+Epoch 7/200
+14945/14945 - 57s - loss: 0.0395 - accuracy: 0.9868 - 57s/epoch - 4ms/step
+Epoch 8/200
+14945/14945 - 57s - loss: 0.0387 - accuracy: 0.9872 - 57s/epoch - 4ms/step
+Epoch 9/200
+14945/14945 - 57s - loss: 0.0365 - accuracy: 0.9879 - 57s/epoch - 4ms/step
+Epoch 10/200
+14945/14945 - 58s - loss: 0.0361 - accuracy: 0.9885 - 58s/epoch - 4ms/step
+Epoch 11/200
+14945/14945 - 58s - loss: 0.0347 - accuracy: 0.9884 - 58s/epoch - 4ms/step
+Epoch 12/200
+14945/14945 - 60s - loss: 0.0334 - accuracy: 0.9891 - 60s/epoch - 4ms/step
+Epoch 13/200
+14945/14945 - 61s - loss: 0.0320 - accuracy: 0.9895 - 61s/epoch - 4ms/step
+Epoch 14/200
+14945/14945 - 58s - loss: 0.0312 - accuracy: 0.9895 - 58s/epoch - 4ms/step
+Epoch 15/200
+14945/14945 - 57s - loss: 0.0304 - accuracy: 0.9899 - 57s/epoch - 4ms/step
+Epoch 16/200
+14945/14945 - 57s - loss: 0.0295 - accuracy: 0.9903 - 57s/epoch - 4ms/step
+Epoch 17/200
+14945/14945 - 56s - loss: 0.0291 - accuracy: 0.9905 - 56s/epoch - 4ms/step
+Epoch 18/200
+14945/14945 - 56s - loss: 0.0277 - accuracy: 0.9907 - 56s/epoch - 4ms/step
+Epoch 19/200
+14945/14945 - 59s - loss: 0.0270 - accuracy: 0.9911 - 59s/epoch - 4ms/step
+Epoch 20/200
+14945/14945 - 60s - loss: 0.0262 - accuracy: 0.9912 - 60s/epoch - 4ms/step
+Epoch 21/200
+14945/14945 - 62s - loss: 0.0254 - accuracy: 0.9918 - 62s/epoch - 4ms/step
+Epoch 22/200
+14945/14945 - 57s - loss: 0.0249 - accuracy: 0.9918 - 57s/epoch - 4ms/step
+Epoch 23/200
+14945/14945 - 57s - loss: 0.0244 - accuracy: 0.9920 - 57s/epoch - 4ms/step
+Epoch 24/200
+14945/14945 - 57s - loss: 0.0240 - accuracy: 0.9924 - 57s/epoch - 4ms/step
+Epoch 25/200
+14945/14945 - 58s - loss: 0.0229 - accuracy: 0.9926 - 58s/epoch - 4ms/step
+Epoch 26/200
+14945/14945 - 62s - loss: 0.0232 - accuracy: 0.9924 - 62s/epoch - 4ms/step
+Epoch 27/200
+14945/14945 - 61s - loss: 0.0224 - accuracy: 0.9927 - 61s/epoch - 4ms/step
+Epoch 28/200
+14945/14945 - 61s - loss: 0.0220 - accuracy: 0.9930 - 61s/epoch - 4ms/step
+Epoch 29/200
+14945/14945 - 60s - loss: 0.0217 - accuracy: 0.9932 - 60s/epoch - 4ms/step
+Epoch 30/200
+14945/14945 - 56s - loss: 0.0208 - accuracy: 0.9930 - 56s/epoch - 4ms/step
+Epoch 31/200
+14945/14945 - 57s - loss: 0.0205 - accuracy: 0.9933 - 57s/epoch - 4ms/step
+Epoch 32/200
+14945/14945 - 57s - loss: 0.0203 - accuracy: 0.9933 - 57s/epoch - 4ms/step
+Epoch 33/200
+14945/14945 - 57s - loss: 0.0195 - accuracy: 0.9938 - 57s/epoch - 4ms/step
+Epoch 34/200
+14945/14945 - 56s - loss: 0.0194 - accuracy: 0.9937 - 56s/epoch - 4ms/step
+Epoch 35/200
+14945/14945 - 55s - loss: 0.0186 - accuracy: 0.9940 - 55s/epoch - 4ms/step
+Epoch 36/200
+14945/14945 - 55s - loss: 0.0186 - accuracy: 0.9940 - 55s/epoch - 4ms/step
+Epoch 37/200
+14945/14945 - 56s - loss: 0.0181 - accuracy: 0.9941 - 56s/epoch - 4ms/step
+Epoch 38/200
+14945/14945 - 57s - loss: 0.0181 - accuracy: 0.9943 - 57s/epoch - 4ms/step
+Epoch 39/200
+14945/14945 - 62s - loss: 0.0173 - accuracy: 0.9946 - 62s/epoch - 4ms/step
+Epoch 40/200
+14945/14945 - 63s - loss: 0.0177 - accuracy: 0.9946 - 63s/epoch - 4ms/step
+Epoch 41/200
+14945/14945 - 60s - loss: 0.0167 - accuracy: 0.9947 - 60s/epoch - 4ms/step
+Epoch 42/200
+14945/14945 - 59s - loss: 0.0164 - accuracy: 0.9949 - 59s/epoch - 4ms/step
+Epoch 43/200
+14945/14945 - 58s - loss: 0.0159 - accuracy: 0.9947 - 58s/epoch - 4ms/step
+Epoch 44/200
+14945/14945 - 56s - loss: 0.0153 - accuracy: 0.9949 - 56s/epoch - 4ms/step
+Epoch 45/200
+14945/14945 - 57s - loss: 0.0153 - accuracy: 0.9952 - 57s/epoch - 4ms/step
+Epoch 46/200
+14945/14945 - 59s - loss: 0.0154 - accuracy: 0.9951 - 59s/epoch - 4ms/step
+Epoch 47/200
+14945/14945 - 57s - loss: 0.0153 - accuracy: 0.9951 - 57s/epoch - 4ms/step
+Epoch 48/200
+14945/14945 - 56s - loss: 0.0147 - accuracy: 0.9953 - 56s/epoch - 4ms/step
+Epoch 49/200
+14945/14945 - 59s - loss: 0.0139 - accuracy: 0.9953 - 59s/epoch - 4ms/step
+Epoch 50/200
+14945/14945 - 61s - loss: 0.0148 - accuracy: 0.9955 - 61s/epoch - 4ms/step
+Epoch 51/200
+14945/14945 - 59s - loss: 0.0139 - accuracy: 0.9956 - 59s/epoch - 4ms/step
+Epoch 52/200
+14945/14945 - 61s - loss: 0.0140 - accuracy: 0.9956 - 61s/epoch - 4ms/step
+Epoch 53/200
+14945/14945 - 62s - loss: 0.0133 - accuracy: 0.9958 - 62s/epoch - 4ms/step
+Epoch 54/200
+14945/14945 - 58s - loss: 0.0137 - accuracy: 0.9957 - 58s/epoch - 4ms/step
+Epoch 55/200
+14945/14945 - 56s - loss: 0.0134 - accuracy: 0.9959 - 56s/epoch - 4ms/step
+Epoch 56/200
+14945/14945 - 56s - loss: 0.0123 - accuracy: 0.9959 - 56s/epoch - 4ms/step
+Epoch 57/200
+14945/14945 - 56s - loss: 0.0130 - accuracy: 0.9958 - 56s/epoch - 4ms/step
+Epoch 58/200
+14945/14945 - 56s - loss: 0.0123 - accuracy: 0.9959 - 56s/epoch - 4ms/step
+Epoch 59/200
+14945/14945 - 58s - loss: 0.0119 - accuracy: 0.9961 - 58s/epoch - 4ms/step
+Epoch 60/200
+14945/14945 - 60s - loss: 0.0129 - accuracy: 0.9961 - 60s/epoch - 4ms/step
+Epoch 61/200
+14945/14945 - 59s - loss: 0.0122 - accuracy: 0.9960 - 59s/epoch - 4ms/step
+Epoch 62/200
+14945/14945 - 57s - loss: 0.0111 - accuracy: 0.9965 - 57s/epoch - 4ms/step
+Epoch 63/200
+14945/14945 - 58s - loss: 0.0124 - accuracy: 0.9963 - 58s/epoch - 4ms/step
+Epoch 64/200
+14945/14945 - 59s - loss: 0.0120 - accuracy: 0.9963 - 59s/epoch - 4ms/step
+Epoch 65/200
+14945/14945 - 57s - loss: 0.0120 - accuracy: 0.9964 - 57s/epoch - 4ms/step
+accuracy: 99.69%
+Saved model to disk: models/model.h5
+Loaded model from disk
+accuracy: 98.73%

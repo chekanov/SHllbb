@@ -1,0 +1,7 @@
+echo "Full training"
+hostname
+source ../msetup.sh
+rm -f out
+ln -s ../out .
+# 10% of 4M file for training 
+python   train_backprop.py 

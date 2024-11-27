@@ -1,0 +1,3 @@
+### Summary of trainning
+Training data size   :2
+Validation data size :2

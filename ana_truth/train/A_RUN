@@ -1,0 +1,9 @@
+# Anomaly detection:
+echo "Full run"
+hostname
+source ../msetup.sh
+
+rm -f out
+ln -s ../out .
+# 10% of 4M file for training 
+python  arun_autoencoder.py out/tev13.6pp_pythia8_ttbar_2lep_data10percent.csv.gz

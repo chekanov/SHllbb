@@ -1,0 +1,49 @@
+#!/bin/bash
+#
+CURRENT_DIR=`pwd`
+
+source ./msetup.sh
+
+rm -f ana
+make -f Makefile
+
+export LD_LIBRARY_PATH=./lib/src/:$LD_LIBRARY_PATH
+echo "STORAGE=$STORAGE"
+
+TRIG=30
+
+DIR=/users/chekanov/hepsim/events/pp/13.6tev/mg5_py8_X2hh/
+#DIR=/users/chekanov/work/SMFitter/theory/pythia8/package_lhe/out/
+ 
+
+rm -f  data.in
+mass=500
+ls -1 $DIR/hh_${mass}GeV_unweighted_events.promc > data.in
+./ana data.in out/mg5_py8_X2hh_${mass}GeV_unweighted_events.root $TRIG      
+
+
+rm -f  data.in
+mass=700
+ls -1 $DIR/hh_${mass}GeV_unweighted_events.promc > data.in
+./ana data.in out/mg5_py8_X2hh_${mass}GeV_unweighted_events.root $TRIG 
+
+
+rm -f  data.in
+mass=1000
+ls -1 $DIR/hh_${mass}GeV_unweighted_events.promc > data.in
+./ana data.in out/mg5_py8_X2hh_${mass}GeV_unweighted_events.root $TRIG 
+
+
+rm -f  data.in
+mass=1500
+ls -1 $DIR/hh_${mass}GeV_unweighted_events.promc > data.in
+./ana data.in out/mg5_py8_X2hh_${mass}GeV_unweighted_events.root $TRIG 
+
+
+rm -f  data.in
+mass=2000
+ls -1 $DIR/hh_${mass}GeV_unweighted_events.promc > data.in
+./ana data.in out/mg5_py8_X2hh_${mass}GeV_unweighted_events.root $TRIG 
+
+
+
