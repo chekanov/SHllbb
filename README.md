@@ -55,10 +55,7 @@ You need to download this data so you can run these scripts.
    ./A_RUN
 ```
 
-   This script runs "arun_autoencoder.py" which reads cvs.gz files
-   and train autoencoder.
-
-   The training model will show up in train/models
+   This script runs "arun_autoencoder.py" which reads cvs.gz files with 10% of events and train the autoencoder. The training model will show up in train/models
 
 4) Final run to process all data using the trained model. In the main directory run
 
@@ -75,16 +72,14 @@ You need to download this data so you can run these scripts.
 
 Go to "train_bkprop/" directory and train NN using "A_RUN". The model will me saved to "model/".
 
-Then  process data with trained neural net using the scripts "*ANALYSIS* 
-
-It fills the histogram "Score" which is 0 for ttbar and 1 for BSM. The outputs goes to "out/*BACKprop.root" histograms. The inavrainat mass for BSM is selected when score>0.5
+Then  process data with trained neural net using the scripts withe the string "ANALYSIS*. They run over ttbar and BSM models. It fills the histogram "Score" which is 0 for ttbar and 1 for BSM. The outputs goes to "out/[NAME]_BACKprop.root" histograms. The inavrainat mass for BSM is selected when score>0.5
 
 
 ## Making plots
 
 X->HH:
 ```
-   loss_cut_Hh.py  - loss distribution for AD
+   loss_cut_Hh.py  - loss distribution for AD filter
    backprop_score_Hh.py - backpropogation score
    kin_mbb_Hh.py  - X->SH before anything
    kin_mbb_Hh_after_bkprop.py - after backpropogation
