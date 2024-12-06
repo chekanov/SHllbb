@@ -17,8 +17,8 @@ This compiles ana.cc which reads ProMC files from the file specified in "data.in
    ./A_RUN_ttbar - ttbar background
    ./A_RUN_wzjets - Z+jets
    ./A_RUN_X2hh - X-> hh (MG5, all decays)
-   ./A_RUN_X2HH - X-> HH (Pythia8, ZZ+bb decays, Z to ll)
-   ./A_RUN_X2SH - X-> SH (Pythia8, ZZ+bb decays, Z to ll)  S has the mass m(X)/2
+   ./A_RUN_X2HH - X-> HH (Pythia8, ZZ+bb decays, selected with 2 leptons pT>14 GeV)
+   ./A_RUN_X2SH - X-> SH (Pythia8, tt+bb decays, selected with 2 leptons pT>14 GeV)  S has the mass m(X)/2
 ```
 
 The data are:
@@ -33,7 +33,7 @@ https://atlaswww.hep.anl.gov/hepsim/info.php?item=384
 BSM:
 https://atlaswww.hep.anl.gov/hepsim/info.php?item=383
 https://atlaswww.hep.anl.gov/hepsim/info.php?item=385
-https://atlaswww.hep.anl.gov/hepsim/info.php?item=386
+https://atlaswww.hep.anl.gov/hepsim/info.php?item=387
 ```
 
 You need to download this data so you can run these scripts.
@@ -61,8 +61,8 @@ You need to download this data so you can run these scripts.
 
 ```
    ./A_RUN_ANALYSIS - for ttbar
-   ./A_RUN_ANALYSIS_X2HH - for HH (Pythia8, ZZ+bb decays, one Z to ll)
-   ./A_RUN_ANALYSIS_X2SH - for SH (Pythia8, ZZ+bb decays, S goes to ZZ, one Z to ll)
+   ./A_RUN_ANALYSIS_X2HH - for HH (Pythia8, ZZ+bb decays, 2-lepton selected)
+   ./A_RUN_ANALYSIS_X2SH - for SH (Pythia8, tt+bb decays, S goes to ttbar, 2-lepton selected )
 ```
 
   The files with losses and Mjj will be in "out/*ADFilter* directory
