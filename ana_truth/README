@@ -12,8 +12,8 @@ Full analysis chain.
    ./A_RUN_ttbar - ttbar background
    ./A_RUN_wzjets - Z+jets
    ./A_RUN_X2hh - X-> hh (MG5, all decays)
-   ./A_RUN_X2HH - X-> HH (Pythia8, ZZ+bb decays, Z to ll)
-   ./A_RUN_X2SH - X-> SH (Pythia8, ZZ+bb decays, Z to ll)
+   ./A_RUN_X2HH - X-> HH (Pythia8, ZZ+bb decays, 2-lepton selected)
+   ./A_RUN_X2SH - X-> SH (Pythia8, tt+bb decays, 2-lepton selected)
                           S has the mass m(X)/2
 
    The data are:
@@ -23,7 +23,7 @@ Full analysis chain.
    BSM:
    https://atlaswww.hep.anl.gov/hepsim/info.php?item=383
    https://atlaswww.hep.anl.gov/hepsim/info.php?item=385
-   https://atlaswww.hep.anl.gov/hepsim/info.php?item=386
+   https://atlaswww.hep.anl.gov/hepsim/info.php?item=387 
 
    You need to download this data so you can run these scripts.
   
@@ -48,8 +48,8 @@ Full analysis chain.
 4) Final run to process all data using the trained model. In the main directory run
 
    ./A_RUN_ANALYSIS - for ttbar
-   ./A_RUN_ANALYSIS_X2HH - for HH (Pythia8, ZZ+bb decays, Z to ll)
-   ./A_RUN_ANALYSIS_X2SH - for HH (Pythia8, ZZ+bb decays, Z to ll)
+   ./A_RUN_ANALYSIS_X2HH - for HH (Pythia8, ZZ+bb decays, 2-lepton selected)
+   ./A_RUN_ANALYSIS_X2SH - for SH (Pythia8, tt+bb decays, 2-lepton selected)
 
   The files with losses and Mjj will be in "out/*ADFilter* directory
 

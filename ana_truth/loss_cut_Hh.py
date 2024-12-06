@@ -94,8 +94,7 @@ for b in range(len(bmass)):
      xfile1.Close()
 
 
-
-Xcut=CutOutlier_10PB
+Xcut=CutOutlier
 #xsum14000=data.Integral(data.FindBin(Xcut), data.FindBin(0));
 #print("Summ=",xsum14000, " for cut=",Xcut)
 x1=c1.XtoPad(Xcut)
@@ -123,7 +122,7 @@ leg2.AddEntry(ttbar,"PYTHIA8 SM (t#bar{t})","lf")
 #leg2.AddEntry(ttbar,"M(S)=M(X)/2","")
 for b in range(len(bmass)):
      mass=bmass[b]
-     leg2.AddEntry(bhitos[mass],"X("+str(mass)+ ")#rightarrow Hh (Py8)","lf")
+     leg2.AddEntry(bhitos[mass],"X("+str(mass)+ ")#rightarrow Hh","lf")
 
 #leg2.AddEntry(bsm,"SSM\; W\,{\\prime}(3 TeV) \\rightarrow Z\,{\\prime} (2\, TeV) W (all\, decays)","lf")
 leg2.Draw("same")

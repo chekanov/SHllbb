@@ -49,7 +49,7 @@ epsfig=figdir+(fname).replace(".py",".eps")
 # plot ranges
 nameY="Events"
 Ymin=0.1
-Ymax=500*1000 -10 
+Ymax=400*1000 -10 
 Xmin=0
 Xmax=1000.-1
 
@@ -139,14 +139,18 @@ def getBSM_X2hh(mass):
      
       ffZ=TFile("out/mg5_py8_X2hh_X"+str(mass)+"GeV_ADFilter.root")
       hh=ffZ.Get(name)
-      crossZ=ffZ.Get("cross");
-      #crossZ.Print("All")  
-      xsecZ=crossZ.GetBinContent(1)
-      lumiZ=float(crossZ.GetBinContent(4)) # 4th bin is lumi 
-      print("Cross=",xsecZ," lumi=",lumiZ," name=",name)
-      CurrentLumuZ=lumiZ/1000.0
+
+      crossHisto=ffZ.Get("cross");
+      #crossZ.Print("All")
+      #xsecZ=crossZ.GetBinContent(1)
+      #lumiZ=float(crossZ.GetBinContent(4))
+      crossZ=mg5xcross[mass]
+      nevents=float(crossHisto.GetBinContent(2))
+      CurrentLumuZ=nevents/crossZ # lumi in fb-1
+      print("Cross=",crossZ,"fb lumi=",CurrentLumuZ," name=",name)
       Scale=ExpectedLumiFB/CurrentLumuZ;
       hh.Scale(Scale)
+
       hh.SetDirectory(0)
       hh.SetTitle(str(mass))
       hh.SetName(str(mass))
@@ -192,20 +196,10 @@ signals.append(mass2000_org)
 
 # mass500_org.Print("All")
 
-
-MaxBin=120 
-Idx=hhD.FindBin(MaxBin)
-print("Bin with maximum entries=",Idx)
-for i in range(len(signals)):
-         his=signals[i]
-         Idx=his.FindBin(MaxBin)
-         N_signal = his.GetBinContent( Idx );
-         N_bkg=hhD.GetBinContent( Idx );
-         Sign=signif(N_signal, N_bkg)
-         print("Mass=",his.GetTitle(), " Sign=",Sign)
+getSignificances(bkg=hhD, sig=signals, peak=120)
 
 
-leg2=TLegend(0.4, 0.6, 0.95, 0.8);
+leg2=TLegend(0.49, 0.6, 0.95, 0.8);
 leg2.SetBorderSize(0);
 leg2.SetTextFont(62);
 leg2.SetFillColor(10);
@@ -213,7 +207,7 @@ leg2.SetTextSize(0.035);
 #leg2.AddEntry(hhDD,"SM background","lp")
 leg2.AddEntry(hhD,mcTT,"lfp")
 #leg2.AddEntry(hhZ,mcWZ,"lfp")
-leg2.AddEntry(mass500,"MG5 M_{X}=500-2000 scaled","lfp")
+leg2.AddEntry(mass500,"MG5 M_{X}=0.5 - 2 TeV","lfp")
 
 #for k in mcprediction:
 #         leg2.AddEntry(k,k.GetTitle(),"l")
@@ -224,7 +218,7 @@ leg2.Draw("same")
 
 Lumi=" %.0f fb^{-1}" % (lumi/1000.)
 intLUMI="#int L dt = "+Lumi
-myText(0.6,0.85,1,0.035,intLUMI) 
+myText(0.49,0.85,1,0.035,intLUMI) 
 #myText(0.3,0.89,1,0.03,"pp #sqrt{s}=13 TeV")
 #myText(0.7,0.61,2,0.04,"all jets")
 

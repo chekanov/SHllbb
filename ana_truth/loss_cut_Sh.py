@@ -66,6 +66,10 @@ ttbar.SetAxisRange(Ymin, Ymax,"y");
 ttbar.SetAxisRange(Xmin, Xmax,"x");
 ttbar.Draw("same histo")
 
+dMean=ttbar.GetMean()
+dData=dMean+3*ttbar.GetRMS()
+print("Anomaly region defined at mean-3*RMS as =",dData)
+
 
 # show hh BSM
 bmass=[500,700,1000,1500,2000]
@@ -94,7 +98,7 @@ for b in range(len(bmass)):
 
 
 
-Xcut=CutOutlier_10PB
+Xcut=CutOutlier
 #xsum14000=data.Integral(data.FindBin(Xcut), data.FindBin(0));
 #print("Summ=",xsum14000, " for cut=",Xcut)
 x1=c1.XtoPad(Xcut)

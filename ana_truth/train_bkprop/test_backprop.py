@@ -42,6 +42,28 @@ def ReadData(inputData):
       col0=dcol0[dcol0.columns[0]]
       df=df.drop(col0, axis = 1)
       df=df.drop('Label', axis = 1)
+
+
+      # get mass from file name
+      mass_value=0
+      start = inputData.find("X") + 1
+      end = inputData.find("GeV")
+      if (start>0 and end>0):
+                   mass_value = float(inputData[start:end])
+                   print("Found mass=",mass_value);
+
+      CM_ENERGY=136000.0
+
+      # add mass / CM for signal, but fill random for data
+      print("Nr of columns=",df.shape[1]);
+      mass=np.empty(df.shape[0]);
+      if (mass_value>0): mass.fill(mass_value/CM_ENERGY)
+      else:  mass=np.random.uniform(low=0.0, high=2000/CM_ENERGY, size=(df.shape[0],))
+
+      df['Mass'] = mass
+      #df.insert(loc=1, column='Mass', value=mass)
+      print("Nr of columns after adding mass=",df.shape[1]);
+
       #print("Total zero-cells removed=",len(dcol0))
       #print("Apply scalers and remove 0 columns: DF size=",df.size," DF shape=",df.shape," DF dimension=",df.ndim)
       return df
@@ -66,7 +88,7 @@ df5=ReadData("out/pythia8_X2000GeV_HH2bbll_data100percent.csv.gz")
 # combine all 
 df=pd.concat([df1,df2,df3,df4,df5])
 print("Final after append: size=",df.size," DF shape=",df.shape," DF dimension=",df.ndim)
-# sys.exit()
+sys.exit()
 
 
 # read SM
@@ -116,8 +138,8 @@ print('Validation data size after append :', X_valid.shape)
 
 # Modeling
 # No of Neurons in each Layer [2602,12,6,4,6,12,2602]
-input_dim = X_train.shape[1]
-print("input_dim :", X_train.shape[1])  # Check the number of features (input dimension)
+#input_dim = X_train.shape[1]
+#print("input_dim :", X_train.shape[1])  # Check the number of features (input dimension)
 
 
 print(" ")

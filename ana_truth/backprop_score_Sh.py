@@ -25,7 +25,7 @@ fname=os.path.basename(__file__)
 #fname=fname.replace(".py","_"+trig_type+".py");
 epsfig=figdir+(fname).replace(".py",".eps")
 
-nameX="Score"
+nameX="ML Score"
 nameY="Events"
 Ymin=1 
 Ymax=1000000000
@@ -75,6 +75,15 @@ for b in range(len(bmass)):
      xfile1="out/pythia8_X"+str(mass)+"GeV_SH2bbll_BACKprog.root"
      xfile1=TFile( xfile1 )
      bsm=xfile1.Get(name)
+
+     crossHisto=xfile1.Get("cross");
+     crossZ=mg5xcross[mass]
+     nevents=float(crossHisto.GetBinContent(2))
+     CurrentLumuZ=nevents/crossZ # lumi in fb-1
+     print("Cross=",crossZ,"fb lumi=",CurrentLumuZ," name=",name)
+     Scale=ExpectedLumiFB/CurrentLumuZ;
+     bsm.Scale(Scale)
+
      bsm.SetDirectory(0)
      bsm.SetTitle("")
      bsm.SetStats(0)
@@ -113,7 +122,7 @@ ax.SetTitleOffset(1.1); ay.SetTitleOffset(1.6)
 ax.Draw("same")
 ay.Draw("same")
 
-leg2=TLegend(0.16, 0.7, 0.82, 0.93);
+leg2=TLegend(0.16, 0.7, 0.85, 0.93);
 leg2.SetBorderSize(0);
 leg2.SetTextFont(62);
 leg2.SetFillColor(10);
@@ -122,7 +131,7 @@ leg2.AddEntry(ttbar,"PYTHIA8 SM (t#bar{t})","lf")
 leg2.AddEntry(ttbar,"M(S)=M(X)/2","")
 for b in range(len(bmass)):
      mass=bmass[b]
-     leg2.AddEntry(bhitos[mass],"X("+str(mass)+ ")#rightarrow Sh (Py8)","lf")
+     leg2.AddEntry(bhitos[mass],"X("+str(mass)+ ")#rightarrow Sh","lf")
 
 #leg2.AddEntry(bsm,"SSM\; W\,{\\prime}(3 TeV) \\rightarrow Z\,{\\prime} (2\, TeV) W (all\, decays)","lf")
 leg2.Draw("same")

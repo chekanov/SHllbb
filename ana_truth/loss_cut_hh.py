@@ -94,7 +94,7 @@ for b in range(len(bmass)):
 
 
 
-Xcut=CutOutlier_10PB
+Xcut=CutOutlier
 #xsum14000=data.Integral(data.FindBin(Xcut), data.FindBin(0));
 #print("Summ=",xsum14000, " for cut=",Xcut)
 x1=c1.XtoPad(Xcut)

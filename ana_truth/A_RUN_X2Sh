@@ -12,27 +12,27 @@ echo "STORAGE=$STORAGE"
 
 TRIG=30
 
-DIR=/users/chekanov/hepsim/events/pp/13.6tev/pythia8_SH2bbll/
+DIR=/users/chekanov/hepsim/events/pp/13.6tev/pythia8_SttH2bbll/
 
 
 rm -f  data.in
 mass=500
-ls -1 $DIR/pythia8_X${mass}_SH2bbll.promc > data.in
+ls -1 $DIR/pythia8_X${mass}_SttH2bbll.promc > data.in
 ./ana data.in out/pythia8_X${mass}GeV_SH2bbll.root $TRIG      
 
 mass=700
-ls -1 $DIR/pythia8_X${mass}_SH2bbll.promc > data.in
+ls -1 $DIR/pythia8_X${mass}_SttH2bbll.promc > data.in
 ./ana data.in out/pythia8_X${mass}GeV_SH2bbll.root $TRIG          
 
 mass=1000
-ls -1 $DIR/pythia8_X${mass}_SH2bbll.promc > data.in
+ls -1 $DIR/pythia8_X${mass}_SttH2bbll.promc > data.in
 ./ana data.in out/pythia8_X${mass}GeV_SH2bbll.root $TRIG 
 
 mass=1500
-ls -1 $DIR/pythia8_X${mass}_SH2bbll.promc > data.in
+ls -1 $DIR/pythia8_X${mass}_SttH2bbll.promc > data.in
 ./ana data.in out/pythia8_X${mass}GeV_SH2bbll.root $TRIG  
 
 mass=2000
-ls -1 $DIR/pythia8_X${mass}_SH2bbll.promc > data.in
+ls -1 $DIR/pythia8_X${mass}_SttH2bbll.promc > data.in
 ./ana data.in out/pythia8_X${mass}GeV_SH2bbll.root $TRIG 
 
