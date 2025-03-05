@@ -47,9 +47,9 @@ epsfig=figdir+(fname).replace(".py",".eps")
 # plot ranges
 nameY="Events"
 Ymin=0.1
-Ymax=4000 -1 
+Ymax=31000 -1 
 Xmin=0
-Xmax=1000.-1
+Xmax=500.-1
 
 # sideband normalisation
 XminSide=0
@@ -81,7 +81,7 @@ ffD=TFile("out/tev13.6pp_pythia8_ttbar_2lep_BACKprog.root")
 hhD=ffD.Get(name)
 cross=ffD.Get("cross");
 xsec=cross.GetBinContent(1)
-lumi=float(cross.GetBinContent(4))
+lumi=float(cross.GetBinContent(5))
 print("Cross=",xsec," lumi=",lumi)
 
 Imin=hhD.FindBin(XminSide)
@@ -112,7 +112,7 @@ ffZ=TFile("out/tev13.6pp_pythia8_wzjet_2lep.root")
 hhZ=ffZ.Get(name)
 crossZ=ffZ.Get("cross");
 xsecZ=crossZ.GetBinContent(1)
-lumiZ=float(crossZ.GetBinContent(4))
+lumiZ=float(crossZ.GetBinContent(5))
 print("Cross=",xsecZ," lumi=",lumiZ)
 CurrentLumuZ=lumiZ/1000.0
 Scale=ExpectedLumiFB/CurrentLumuZ;
@@ -141,7 +141,7 @@ def getBSM_X2hh(mass):
       #crossZ.Print("All")
       #xsecZ=crossZ.GetBinContent(1)
       #lumiZ=float(crossZ.GetBinContent(4))
-      crossZ=mg5xcross[mass]
+      crossZ=mg5Sxcross[mass]
       nevents=float(crossHisto.GetBinContent(2))
       CurrentLumuZ=nevents/crossZ # lumi in fb-1
       print("Cross=",crossZ,"fb lumi=",CurrentLumuZ," name=",name)
@@ -152,12 +152,9 @@ def getBSM_X2hh(mass):
       hh.SetName(str(mass))
       hh_orig=hh.Clone()
       hh_orig.SetDirectory(0)
-
       colo=31
-      scale=1
       if mass in xmapcolor:
                   colo=xmapcolor[mass]
-      hh.Scale(scale) # to see better  
       hh.SetTitle(str(mass))
       hh.SetName(str(mass))
       hh.SetLineColor(colo)
@@ -187,8 +184,7 @@ signals.append(mass2000_org)
 
 
 # mass500_org.Print("All")
-
-getSignificances(bkg=hhD, sig=signals, peak=120)
+getSignificances(bkg=hhD, sig=signals, peak=120, jsout="out/"+fname.replace(".py",".js"))
 
 leg2=TLegend(0.51, 0.6, 0.95, 0.8);
 leg2.SetBorderSize(0);
@@ -198,7 +194,7 @@ leg2.SetTextSize(0.035);
 #leg2.AddEntry(hhDD,"SM background","lp")
 leg2.AddEntry(hhD,mcTT,"lfp")
 leg2.AddEntry(mass500,"X#rightarrow SH, M_{X}=0.5 - 2 TeV","lfp")
-leg2.AddEntry(mass500,"M(S)=M(X)/2","")
+#leg2.AddEntry(mass500,"M(S)=M(X)/2","")
 
 #for k in mcprediction:
 #         leg2.AddEntry(k,k.GetTitle(),"l")

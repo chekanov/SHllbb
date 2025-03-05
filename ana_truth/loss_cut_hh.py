@@ -61,9 +61,23 @@ ttbar.SetLineWidth(2)
 ttbar.SetLineColor( 1 )
 ttbar.SetMarkerColor( 1 )
 ttbar.SetMarkerSize( 1.1 )
+ttbar.SetLineStyle( 2 )
 #ttbar.SetFillColor( 6 )
 ttbar.SetAxisRange(Ymin, Ymax,"y");
 ttbar.SetAxisRange(Xmin, Xmax,"x");
+
+
+# expected events
+cross=xfile.Get("cross");
+xsec=cross.GetBinContent(1)
+lumi=float(cross.GetBinContent(5))
+print("Cross=",xsec," lumi=",lumi)
+CurrentLumuFB=lumi/1000.0
+Scale=ExpectedLumiFB/CurrentLumuFB;
+ttbar.Scale(Scale)
+lumi=ExpectedLumiFB*1000;
+
+
 ttbar.Draw("same histo")
 
 
@@ -82,6 +96,15 @@ for b in range(len(bmass)):
      bsm.SetLineColor( 1 )
      bsm.SetMarkerColor( 1 )
      bsm.SetMarkerSize( 1.1 )
+
+     crossHisto=xfile1.Get("cross");
+     crossZ=mg5xcross[mass]
+     nevents=float(crossHisto.GetBinContent(2))
+     CurrentLumuZ=nevents/crossZ # lumi in fb-1
+     print("Cross=",crossZ,"fb lumi=",CurrentLumuZ," name=",name)
+     Scale=ExpectedLumiFB/CurrentLumuZ;
+     bsm.Scale(Scale)
+
      if mass in xmapcolor:
                   colo=xmapcolor[mass]
                   #bsm.SetFillColor(colo)

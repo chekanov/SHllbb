@@ -19,20 +19,11 @@ import random
 import sys,zipfile,json,math
 from array import *
 from math import *
+import json
 
-CMS=13000.0
 
-# Run 2 and Run3 in TeV
-CMS_RUN2=CMS
-CMS_RUN3=13600.0
-
-# Run2 and Run3 in TeV
-CMS_RUN2_TEV=CMS_RUN2*0.001 
-CMS_RUN3_TEV=CMS_RUN3*0.001
-
-# minimum Run for Run2. After this run number, run3 starts
-RUN3_MIN_RUN=420000
-
+# CM energy of collisions
+CMS=13600.0
 
 ## masses labels 
 masseslab=["jj","jb","bb","je","j\;\mu","j\;\gamma","b\;\ell","b\;\mu","b\;\gamma"]
@@ -67,11 +58,27 @@ mg5xcross[1500]=0.01*xfactor
 mg5xcross[2000]=0.001*xfactor 
 
 
+# factors for "SH" to get the same significance
+xfactor=1000*(1.0/3.687)   # fb x branching ratio
+mg5Sxcross={}
+#mg5Sxcross[500]=1.4*xfactor
+#mg5Sxcross[700]=0.187*xfactor
+#mg5Sxcross[1000]=0.015*xfactor
+#mg5Sxcross[1500]=0.00065*xfactor
+#mg5Sxcross[2000]=0.000065*xfactor
+
+mg5Sxcross[500]=12.4*xfactor
+mg5Sxcross[700]=2.0*xfactor
+mg5Sxcross[1000]=0.2*xfactor
+mg5Sxcross[1500]=0.01*xfactor
+mg5Sxcross[2000]=0.001*xfactor
+
+
 
 #########################################################
 # cut to select outlier events
 
-# exopected lumin in pb
+# expcted lumin in pb
 ExpectedLumiFB=140
 
 
@@ -83,7 +90,9 @@ CutOutlier_10PB=-9.10
 CutOutlier_3RMS=-7.85
 
 # main cuts
-CutOutlier=CutOutlier_10PB
+# CutOutlier=CutOutlier_10PB
+CutOutlier=CutOutlier_3RMS
+
 
 
 mcTT="PYTHIA8 t#bar{t}+single t"
@@ -624,13 +633,18 @@ def signif(S,B):
      else:  return math.sqrt(2* ( (S+B)*math.log(1+ float(S)/B)-S ) )
 
 # get significance near the mass "peak" (gev)  using bkg and sig histograms, for a list of masses
-def getSignificances(bkg, sig, peak=120):
+def getSignificances(bkg, sig, peak=120, jsout="out/significance.js"):
      Idx=bkg.FindBin(peak)
      print("3 bins with maximum entries=",Idx)
+     signif_dic={}
      for i in range(len(sig)):
          his=sig[i]
          N_signal = his.GetBinContent( Idx )+his.GetBinContent( Idx-1 )+his.GetBinContent( Idx+1 );
          N_bkg=bkg.GetBinContent( Idx )+bkg.GetBinContent( Idx-1 )+bkg.GetBinContent( Idx+1 );
          Sign=signif(N_signal, N_bkg)
          print("Mass=",his.GetTitle(), " Sign=",Sign)
+         signif_dic[his.GetTitle()]=float(Sign)
+     with open(jsout, "w") as f:
+      f.write(json.dumps(signif_dic, indent=4)) 
+     print("Write significances to=",jsout)
 

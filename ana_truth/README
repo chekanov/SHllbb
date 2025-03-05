@@ -13,8 +13,7 @@ Full analysis chain.
    ./A_RUN_wzjets - Z+jets
    ./A_RUN_X2hh - X-> hh (MG5, all decays)
    ./A_RUN_X2HH - X-> HH (Pythia8, ZZ+bb decays, 2-lepton selected)
-   ./A_RUN_X2SH - X-> SH (Pythia8, tt+bb decays, 2-lepton selected)
-                          S has the mass m(X)/2
+   ./A_RUN_X2SH - X-> SH (Pythia8, X->SH->HHH, M(S)=280 GeV. 2-lepton selected)
 
    The data are:
    https://atlaswww.hep.anl.gov/hepsim/info.php?item=382
@@ -22,8 +21,7 @@ Full analysis chain.
 
    BSM:
    https://atlaswww.hep.anl.gov/hepsim/info.php?item=383
-   https://atlaswww.hep.anl.gov/hepsim/info.php?item=385
-   https://atlaswww.hep.anl.gov/hepsim/info.php?item=387 
+   https://atlaswww.hep.anl.gov/hepsim/info.php?item=392
 
    You need to download this data so you can run these scripts.
   
@@ -83,7 +81,10 @@ The inavrainat mass for BSM is selected when score>0.5
    kin_mbb_Sh_after_bkprop.py - after backpropogation
    kin_mbb_Sh_after_ad.py - after AD filter
  
-  
+   signif_Hh.py - HH significance
+   signif_Sh.py - SH significance
+ 
+  Or you can just run A_MACRO to make all the plots 
 
 -- S.Chekanov (ANL)
 

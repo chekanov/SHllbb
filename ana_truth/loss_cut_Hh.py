@@ -28,7 +28,7 @@ epsfig=figdir+(fname).replace(".py",".eps")
 
 nameX="log (loss)"
 nameY="Events"
-Ymin=0.1 
+Ymin=0.01 
 Ymax=10000000000
 Xmin=-12
 Xmax=-4
@@ -61,10 +61,23 @@ ttbar.SetStats(0)
 ttbar.SetLineWidth(2)
 ttbar.SetLineColor( 1 )
 ttbar.SetMarkerColor( 1 )
+ttbar.SetLineStyle( 2 )
 ttbar.SetMarkerSize( 1.1 )
 #ttbar.SetFillColor( 6 )
 ttbar.SetAxisRange(Ymin, Ymax,"y");
 ttbar.SetAxisRange(Xmin, Xmax,"x");
+
+# expected events
+cross=xfile.Get("cross");
+xsec=cross.GetBinContent(1)
+lumi=float(cross.GetBinContent(5))
+print("Cross=",xsec," lumi=",lumi)
+CurrentLumuFB=lumi/1000.0
+Scale=ExpectedLumiFB/CurrentLumuFB;
+ttbar.Scale(Scale)
+lumi=ExpectedLumiFB*1000;
+
+
 ttbar.Draw("same histo")
 
 
@@ -83,6 +96,15 @@ for b in range(len(bmass)):
      bsm.SetLineColor( 1 )
      bsm.SetMarkerColor( 1 )
      bsm.SetMarkerSize( 1.1 )
+
+     crossHisto=xfile1.Get("cross");
+     crossZ=mg5xcross[mass]
+     nevents=float(crossHisto.GetBinContent(2))
+     CurrentLumuZ=nevents/crossZ # lumi in fb-1
+     print("Cross=",crossZ,"fb lumi=",CurrentLumuZ," name=",name)
+     Scale=ExpectedLumiFB/CurrentLumuZ;
+     bsm.Scale(Scale)
+
      if mass in xmapcolor:
                   colo=xmapcolor[mass]
                   #bsm.SetFillColor(colo)
@@ -122,7 +144,7 @@ leg2.AddEntry(ttbar,"PYTHIA8 SM (t#bar{t})","lf")
 #leg2.AddEntry(ttbar,"M(S)=M(X)/2","")
 for b in range(len(bmass)):
      mass=bmass[b]
-     leg2.AddEntry(bhitos[mass],"X("+str(mass)+ ")#rightarrow Hh","lf")
+     leg2.AddEntry(bhitos[mass],"X("+str(mass)+ ")#rightarrow HH","lf")
 
 #leg2.AddEntry(bsm,"SSM\; W\,{\\prime}(3 TeV) \\rightarrow Z\,{\\prime} (2\, TeV) W (all\, decays)","lf")
 leg2.Draw("same")

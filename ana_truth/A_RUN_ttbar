@@ -15,4 +15,8 @@ TRIG=30
 
 rm -f  data.in
 Make_input $XDIR/
+
+#tail -2 data.in > a
+#mv a data.in
+
 ./ana data.in out/tev13.6pp_pythia8_ttbar_2lep.root $TRIG 

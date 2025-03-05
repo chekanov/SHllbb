@@ -47,9 +47,9 @@ epsfig=figdir+(fname).replace(".py",".eps")
 # plot ranges
 nameY="Events"
 Ymin=0.1
-Ymax=100000-1 
+Ymax=4000-1 
 Xmin=0
-Xmax=1000.-1
+Xmax=500.-1
 
 # sideband normalisation
 XminSide=0
@@ -81,7 +81,7 @@ ffD=TFile("out/tev13.6pp_pythia8_ttbar_2lep_ADFilter.root")
 hhD=ffD.Get(name)
 cross=ffD.Get("cross");
 xsec=cross.GetBinContent(1)
-lumi=float(cross.GetBinContent(4))
+lumi=float(cross.GetBinContent(5))
 print("Cross=",xsec," lumi=",lumi)
 
 Imin=hhD.FindBin(XminSide)
@@ -112,7 +112,7 @@ ffZ=TFile("out/tev13.6pp_pythia8_wzjet_2lep.root")
 hhZ=ffZ.Get(name)
 crossZ=ffZ.Get("cross");
 xsecZ=crossZ.GetBinContent(1)
-lumiZ=float(crossZ.GetBinContent(4))
+lumiZ=float(crossZ.GetBinContent(5))
 print("Cross=",xsecZ," lumi=",lumiZ)
 CurrentLumuZ=lumiZ/1000.0
 Scale=ExpectedLumiFB/CurrentLumuZ;
@@ -145,8 +145,8 @@ def getBSM_X2hh(mass):
       crossZ=mg5xcross[mass]
       nevents=float(crossHisto.GetBinContent(2))
       CurrentLumuZ=nevents/crossZ # lumi in fb-1
-      print("Cross=",crossZ,"fb lumi=",CurrentLumuZ," name=",name)
       Scale=ExpectedLumiFB/CurrentLumuZ;
+      print("Cross=",crossZ,"fb lumi=",CurrentLumuZ," name=",name, "gen events=",nevents)
       hh.Scale(Scale)
       hh.SetDirectory(0)
       hh.SetTitle(str(mass))
@@ -191,7 +191,7 @@ signals.append(mass2000_org)
 # mass500_org.Print("All")
 
 
-getSignificances(bkg=hhD, sig=signals, peak=110)
+getSignificances(bkg=hhD, sig=signals, peak=120, jsout="out/"+fname.replace(".py",".js"))
 
 
 leg2=TLegend(0.49, 0.6, 0.95, 0.8);
@@ -230,7 +230,7 @@ ax.Draw("same")
 ay.Draw("same")
 
 
-myText(0.65,0.4,1,0.04,"After ML+RMM")
+myText(0.65,0.4,1,0.04,"After AD")
 
 # ATLASLabel(0.2,0.9,0.17,0.02)
 

@@ -82,7 +82,7 @@ ffD=TFile("out/tev13.6pp_pythia8_ttbar_2lep.root")
 hhD=ffD.Get(name)
 cross=ffD.Get("cross");
 xsec=cross.GetBinContent(1)
-lumi=float(cross.GetBinContent(4))
+lumi=float(cross.GetBinContent(5))
 print("Cross=",xsec," lumi=",lumi)
 
 Imin=hhD.FindBin(XminSide)
@@ -113,7 +113,7 @@ ffZ=TFile("out/tev13.6pp_pythia8_wzjet_2lep.root")
 hhZ=ffZ.Get(name)
 crossZ=ffZ.Get("cross");
 xsecZ=crossZ.GetBinContent(1)
-lumiZ=float(crossZ.GetBinContent(4))
+lumiZ=float(crossZ.GetBinContent(5))
 print("Cross=",xsecZ," lumi=",lumiZ)
 CurrentLumuZ=lumiZ/1000.0
 Scale=ExpectedLumiFB/CurrentLumuZ;

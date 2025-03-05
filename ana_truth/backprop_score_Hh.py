@@ -27,8 +27,8 @@ epsfig=figdir+(fname).replace(".py",".eps")
 
 nameX="ML Score"
 nameY="Events"
-Ymin=1 
-Ymax=1000000000
+Ymin=0.1 
+Ymax=10000000000
 Xmin=-0.1
 Xmax=1.1
 
@@ -61,9 +61,22 @@ ttbar.SetLineWidth(2)
 ttbar.SetLineColor( 1 )
 ttbar.SetMarkerColor( 1 )
 ttbar.SetMarkerSize( 1.1 )
+ttbar.SetLineStyle( 2 )
 #ttbar.SetFillColor( 6 )
 ttbar.SetAxisRange(Ymin, Ymax,"y");
 ttbar.SetAxisRange(Xmin, Xmax,"x");
+
+# expected events
+cross=xfile.Get("cross");
+xsec=cross.GetBinContent(1)
+lumi=float(cross.GetBinContent(5))
+print("Cross=",xsec," lumi=",lumi)
+CurrentLumuFB=lumi/1000.0
+Scale=ExpectedLumiFB/CurrentLumuFB;
+ttbar.Scale(Scale)
+lumi=ExpectedLumiFB*1000;
+
+
 ttbar.Draw("same histo")
 
 
@@ -131,12 +144,12 @@ leg2.AddEntry(ttbar,"PYTHIA8 SM (t#bar{t})","lf")
 # leg2.AddEntry(ttbar,"M(S)=M(X)/2","")
 for b in range(len(bmass)):
      mass=bmass[b]
-     leg2.AddEntry(bhitos[mass],"X("+str(mass)+ ")#rightarrow Hh","lf")
+     leg2.AddEntry(bhitos[mass],"X("+str(mass)+ ")#rightarrow HH","lf")
 
 #leg2.AddEntry(bsm,"SSM\; W\,{\\prime}(3 TeV) \\rightarrow Z\,{\\prime} (2\, TeV) W (all\, decays)","lf")
 leg2.Draw("same")
 
-leg3=TLegend(0.65, 0.62, 0.92, 0.80);
+leg3=TLegend(0.65, 0.8, 0.92, 0.85);
 leg3.SetBorderSize(0);
 leg3.SetTextFont(62);
 leg3.SetFillColor(10);
@@ -146,9 +159,9 @@ leg3.Draw("same")
 
 
 # myText(0.65,0.52,1,0.04,UsedData0)
-myText(0.65,0.65,1,0.04,"RMM input with:")
-myText(0.65,0.6,1,0.04,"2 leptons pT>15 GeV")
-myText(0.65,0.55,1,0.04,"2-bjets pT>20 GeV")
+myText(0.65,0.75,1,0.04,"RMM input with:")
+myText(0.65,0.7,1,0.04,"2 leptons pT>15 GeV")
+myText(0.65,0.65,1,0.04,"2-bjets pT>20 GeV")
 # ATLASLabel(0.19,0.89,0.14,0.03)
 
 print (epsfig) 

@@ -81,7 +81,7 @@ ffD=TFile("out/tev13.6pp_pythia8_ttbar_2lep.root")
 hhD=ffD.Get(name)
 cross=ffD.Get("cross");
 xsec=cross.GetBinContent(1)
-lumi=float(cross.GetBinContent(4))
+lumi=float(cross.GetBinContent(5))
 print("Cross=",xsec," lumi=",lumi)
 
 Imin=hhD.FindBin(XminSide)
@@ -112,7 +112,7 @@ ffZ=TFile("out/tev13.6pp_pythia8_wzjet_2lep.root")
 hhZ=ffZ.Get(name)
 crossZ=ffZ.Get("cross");
 xsecZ=crossZ.GetBinContent(1)
-lumiZ=float(crossZ.GetBinContent(4))
+lumiZ=float(crossZ.GetBinContent(5))
 print("Cross=",xsecZ," lumi=",lumiZ)
 CurrentLumuZ=lumiZ/1000.0
 Scale=ExpectedLumiFB/CurrentLumuZ;
@@ -138,7 +138,7 @@ def getBSM_X2hh(mass):
       crossZ=ffZ.Get("cross");
       #crossZ.Print("All")  
       xsecZ=crossZ.GetBinContent(1)
-      lumiZ=float(crossZ.GetBinContent(4))
+      lumiZ=float(crossZ.GetBinContent(5))
       print("Cross=",xsecZ," lumi=",lumiZ," name=",name)
       CurrentLumuZ=lumiZ/1000.0
       Scale=ExpectedLumiFB/CurrentLumuZ;
@@ -183,7 +183,7 @@ signals.append(mass2000_org)
 
 
 # mass500_org.Print("All")
-getSignificances(bkg=hhD, sig=signals, peak=120)
+getSignificances(bkg=hhD, sig=signals, peak=120, jsout="out/"+fname.replace(".py",".js"))
 
 
 leg2=TLegend(0.51, 0.6, 0.95, 0.8);
