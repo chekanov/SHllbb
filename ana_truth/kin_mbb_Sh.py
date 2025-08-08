@@ -46,7 +46,7 @@ epsfig=figdir+(fname).replace(".py",".eps")
 
 # plot ranges
 nameY="Events"
-Ymin=0.1
+Ymin=0.01
 Ymax=400*1000 -10 
 Xmin=0
 Xmax=1000.-1
